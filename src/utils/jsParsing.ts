@@ -1,3 +1,7 @@
-export default function jsParing(filePath: string) {
-  console.log('js')
+import path from 'path'
+import dynamicImport from './dynamicImport'
+
+export default async function jsParing(filePath: string) {
+  const res = await dynamicImport(`file:///${path.resolve(filePath)}`)
+  console.log(res.default)
 }
