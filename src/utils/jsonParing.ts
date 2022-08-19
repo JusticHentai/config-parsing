@@ -1,3 +1,3 @@
-export default function jsonParing(filePath: string) {
+export default async function jsonParing(filePath: string) {
   console.log('json')
 }

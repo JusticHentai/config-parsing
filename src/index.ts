@@ -13,10 +13,12 @@ const parsingMap = {
  * 解析自定义 config 文件
  * @param filePath 文件路径
  */
-export default function configParsing(filePath: string) {
+export default async function configParsing(filePath: string) {
   // 获取文件类型
   const fileType = getFileType(filePath)
 
   // 解析对应文件
-  parsingMap[fileType](filePath)
+  const res = await parsingMap[fileType](filePath)
+
+  return res
 }
