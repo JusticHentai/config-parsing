@@ -11,7 +11,7 @@ const parsingMap = {
 
 /**
  * 解析自定义 config 文件
- * @param filePath 文件路径
+ * @param filePath 文件相对运行目录的路径
  */
 export default async function configParsing(filePath: string) {
   // 获取文件类型
