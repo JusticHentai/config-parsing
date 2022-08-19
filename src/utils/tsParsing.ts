@@ -3,6 +3,10 @@ import dynamicImport from './dynamicImport'
 import rm from './removeFile'
 import shell from './shell'
 
+/**
+ * 解析 ts 文件
+ * @param filePath 文件相对运行目录的路径
+ */
 export default async function tsParing(filePath: string) {
   const command = [`tsc ${filePath} --target esnext`]
 
