@@ -1,77 +1,37 @@
-# Frame-animation
+# Config-parsing
 
-raf and canvas based frame animation tools
-Support for arbitrary rows of frame animation originals
+A tool that can parse custom configuration files like `xxx.config.js | ts | json`
 
-[中文文档](https://juejin.cn/post/7130862826486235167)
+[中文文档](https://juejin.cn/post/7133433459766198280/)
 
 ## Install
 
 ```bash
-npm i @justichentai/frame-animation
+npm i @justichentai/config-parsing
 ```
 
 ## Usage
 
-### Simple Example
+The path is the relative path of the configuration file to the runtime directory
 
-frame-animation will automatically detect the size of your mounted element.
-Make sure the size of the element is equal to the size of one frame
 ```ts
-import FrameAnime from '@justichentai/frame-animation'
+import configParsing from '@justichentai/config-parsing'
 
-const anime = new FrameAnime({  
-  frame: 24,  
-  url: 'url',  
-  duration: 2000,  
-  el: dom,  
-})  
+const res1 = await configParsing('./my.config.ts')
 
-await anime.init()
+const res2 = await configParsing('./my.config.js')
 
-anime.play()
+const res3 = await configParsing('./my.config.json')
 ```
 
-### Options
+## Api
 
 ```ts
-export interface Options {
-  el: HTMLDivElement // The element to be mounted  
-  url: string // The original image of frame animation 
-  frame: number // Frame Rate  
-  duration?: number // Duration in ms  
-  column?: number // The number of columns per row of the original frame animation; 0 mean only one line;Default 0  
-  imageLoadComplete?: (url: HTMLImageElement) => any // Callback when image is loaded  
-}
-```
-
-If the original image of your frame animation looks like this one line past
-![keyFrameTest.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9f6ef5f987184bb196f796533166d5a1~tplv-k3u1fbpfcp-watermark.image?)
-
-column set to `0` or not set.
-If you have multiple rows, set column to how many columns there are in each row
-
-### Load Image
-
-```ts
-await anime.init()
-```
-
-### Start Animation
-
-```ts
-anime.play()
-```
-
-### Pause Animation
-
-```ts
-anime.pause()
-```
-
-### Update
-
-this api is used in element size resize
-```ts
-anime.update()
+/**  
+ * parse custom configuration files
+ * @param filePath The path is the relative path of the configuration file to the runtime directory
+ */  
+declare function configParsing(filePath: string): Promise<any>;  
+  
+export { configParsing as default };
 ```
