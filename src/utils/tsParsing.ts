@@ -10,7 +10,9 @@ export default async function tsParing(filePath: string) {
 
   const newFilePath = filePath.replace(/(?<=[.])ts$/g, 'js')
 
-  const res = await dynamicImport(`file:///${path.resolve(newFilePath)}`)
+  const prefix = process.platform === 'win32' ? 'file:///' : ''
+
+  const res = await dynamicImport(`${prefix}${path.resolve(newFilePath)}`)
 
   await rm(newFilePath)
 
