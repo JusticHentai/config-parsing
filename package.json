@@ -1,6 +1,6 @@
 {
   "name": "@justichentai/config-parsing",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "一个用于解析自定义配置文件的工具 例如解析 xxx.config.js | ts | json; A tool that can parse custom configuration files like xxx.config.js | ts | json",
   "keywords": [
     "justichentai",
