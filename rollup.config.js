@@ -1,5 +1,3 @@
-import { DEFAULT_EXTENSIONS } from '@babel/core'
-import { babel } from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
 import dts from 'rollup-plugin-dts'
@@ -26,16 +24,6 @@ export default [
       resolve(),
       // ts
       typescript(),
-      // babel
-      babel({
-        babelHelpers: 'runtime',
-        // 跳过monorepo里的rollup问题
-        skipPreflightCheck: 'true',
-        //支持 ts
-        extensions: [...DEFAULT_EXTENSIONS, '.ts'],
-        // @babel/plugin-transform-runtime 找不到的坑
-        exclude: /^(.+\/)?node_modules\/.+$/,
-      }),
       // 打包后压缩回车和空格
       terser(),
     ],
